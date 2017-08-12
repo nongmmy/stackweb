@@ -31,9 +31,12 @@
 
 		$index = $_POST['index'];
 		$data = $_POST['data'];
-		//check index 
 
-		if($index >= $thestack->size() || $index < 0 ){
+		if(strlen($index)==0){
+			header('Location: http://localhost/stackweb/index.php?msg=index is empty');
+		}
+		//check index 
+		else if($index >= $thestack->size() || $index < 0 ){
 			header('Location: http://localhost/stackweb/index.php?msg=Out of index');
 		}
 		else{
