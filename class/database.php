@@ -1,16 +1,14 @@
 <?php
 
+// namespace DB;
 
 class Database {
 
-	var $host = 'localhost';
-	var $username = 'root';
-	var $password = '';
-	var $db = 'stackweb';
-	var $conn;
-	function __constructor(){
-
-	}
+	protected $host = 'localhost';
+	protected $username = 'root';
+	protected $password = '';
+	protected $db = 'stackweb'; // database name
+	protected $conn;
 
 
 	function connect_db(){
@@ -57,26 +55,6 @@ class Database {
 	}
 
 
-	//select data from ID
-	function select_data_from_id($id){
-
-		$this->connect_db();
-		$query = "SELECT * FROM stack ";
-		$query .= "WHERE id = $id " ;
-
-		$result = mysqli_query($this->conn,$query);
-
-		if(!$result){
-			die('Query failed '. mysqli_error());
-		}
-
-		$row = mysqli_fetch_assoc($result);
-		$this->close_db();
-		return $row;
-
-	}
-
-
 	function update_data($id,$index){
 
 		$this->connect_db();
@@ -113,12 +91,11 @@ class Database {
 	function count_data(){
 		$this->connect_db();
 		$query = "SELECT * FROM stack";
-
 		$result = mysqli_query($this->conn,$query);
-		$num_rows = mysqli_num_rows($result);
 		if(!$result){
-			die('Count failed'. mysqli_error());
+			die('Count failed'. mysqli_error($result));
 		}
+		$num_rows = mysqli_num_rows($result);
 
 		$this->close_db();
 		return $num_rows;
@@ -130,13 +107,5 @@ class Database {
 		mysqli_close($this->conn);
 	}
 
-
-
-
-
 }
-
-
-
-
 ?>

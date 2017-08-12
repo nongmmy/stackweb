@@ -1,4 +1,3 @@
-<?php include("database.php") ; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,25 +6,34 @@
 </head>
 <body>
 
-	<div class="flex-center full-height">
+	<div id="msg">
+		<?php if(isset($_GET['msg'])){ ?>
+		<p><?php echo $_GET['msg'] ; } ?></p>
+
+		<?php if(isset($_GET['data']) ){ ?>
+		<p><?php echo "data ".$_GET['data'] ;} ?></p>
+	</div>
+
+	<div class="container">
         <div class="content">
-            <div class="title m-b-md">
+            <div class="title">
                   Stack Web Application
             </div>
 	        <form action="main.php" method="POST">
-	       	 	<button name="push">push</button>
-			  	<button name="special">special</button><br>
+	       	 	<button class="push" name="push">push</button>
+			  	<button class="special" name="special">special</button><br>
 				<input type="text" name="data" placeholder="data"><br>
 				<input class="text-form" type="text" name="index" placeholder="index">
 			</form>
 			<br>
 			<form action="main.php" method="POST">
-			  	<button name="pop">pop</button>
+			  	<button class="pop" name="pop">pop</button>
 			</form>
 	        <table>
 	        	<tr>
 	        		<th>stack data</th>
 	        	</tr>
+	        	<?php include 'class/database.php' ; ?>
 	        	<?php $db = new Database(); ?>
 	        	<?php 
 	        		for( $i=$db->count_data()-1 ; $i>=0 ; $i-- ){ 
@@ -36,18 +44,11 @@
 	        	</tr>
 	        	<?php } ?>
 	        </table>
-
-	        
-
         </div>
-
-        
     </div>
 
 	
 	<br>
-
-
 	
 </body>
 </html>

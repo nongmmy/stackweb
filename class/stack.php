@@ -1,6 +1,7 @@
 <?php
-include_once "database.php";
-// use DB\Database;
+// include_once "database.php";
+include 'database.php' ;
+
 
 class Stack{
 
@@ -21,8 +22,8 @@ class Stack{
 			$data = $db->select_data($this->top-1);
 			//delete data at top
 			$db->delete_data($this->top-1);
-			
-			return $data['data'];
+
+			return $data;
 		}
 		
 	}
@@ -42,15 +43,16 @@ class Stack{
 
 		if( $index < $this->size() ){
 			for( $j=$this->size()-1 ; $j>$index ; $j-- ){
-			$row = $db->select_data($j);
-			$id = (int)$row['id'];
-			$i = (int)$row['i'] + 1;
-			$db->update_data($id,$i);
+				$row = $db->select_data($j);
+				$id = (int)$row['id'];
+				$i = (int)$row['i'] + 1;
+				$db->update_data($id,$i);
 			}
+			
+			$db->insert_data($index+1,$data) ;
 		}
 		
-
-		$db->insert_data($index+1,$data) ;
+		
 	}
 
 
@@ -68,9 +70,5 @@ class Stack{
 		return ($this->size()==0) ;
 	}
 
-
 }
-
-
-
 ?>

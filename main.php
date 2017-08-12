@@ -1,23 +1,17 @@
 <?php
 
-	include("database.php") ;
-	include("stack.php");
+	include 'class/stack.php' ;
 
 	$thestack = new Stack();
 
-	$db = new database();
-	// $db->delete_data(19);
-	// $db->update_data();
-	// $row = $db->select_data_from_id(19);
-	// var_dump((int)$row['id']);
-
 	if(isset($_POST['pop'])){
+		//check empty
 		if($thestack->isEmpty()){
 			header('Location: http://localhost/stack_web/index.php?msg=stack_is_empty');
 		}
 		else{
-			$thestack->pop();
-			header('Location: http://localhost/stack_web/index.php?msg=pop_method_success');
+			$data = $thestack->pop();
+			header('Location: http://localhost/stack_web/index.php?msg=pop_method_success&data='.$data['data']);
 		}
 	}
 
@@ -31,6 +25,7 @@
 
 		$index = $_POST['index'];
 		$data = $_POST['data'];
+		//check index 
 		if($index > $thestack->size()){
 			header('Location: http://localhost/stack_web/index.php?msg=out_of_index');
 		}
@@ -38,7 +33,6 @@
 			$thestack->special($index,$data);
 			header('Location: http://localhost/stack_web/index.php?msg=special_method_success');
 		}
-		
 	}
 
 ?>
