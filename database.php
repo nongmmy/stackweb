@@ -8,6 +8,9 @@ class Database {
 	var $password = '';
 	var $db = 'stackweb';
 	var $conn;
+	function __constructor(){
+
+	}
 
 
 	function connect_db(){
@@ -36,7 +39,7 @@ class Database {
 
 
 	//select data form index
-	function select_data_from_index($i){
+	function select_data($i){
 
 		$this->connect_db();
 		$query = "SELECT * FROM stack ";

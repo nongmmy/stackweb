@@ -8,18 +8,20 @@ html, body {
 }
 
 
-.full-height {
+/*.full-height {
     height: 100vh;
-}
+}*/
 
 
 .flex-center {
+    margin-top: 50px;
     align-items: center;
     display: flex;
     justify-content: center;
+
 }
 
-.content {
+.content  {
     text-align: center;
 }
 
@@ -38,7 +40,14 @@ input {
    
 }
 
-div > div > form > input
- {
-    display: inline;
+td {
+    padding: 4px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    border-spacing: 15px;
+    display: flex;
+    justify-content: center;
 }

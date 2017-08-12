@@ -18,10 +18,10 @@ class Stack{
 			$db = new Database() ;
 
 			//select data at top
-			$data = $db->select_data_from_index($this->top-1);
+			$data = $db->select_data($this->top-1);
 			//delete data at top
 			$db->delete_data($this->top-1);
-
+			
 			return $data['data'];
 		}
 		
@@ -40,12 +40,15 @@ class Stack{
 		$this->top();
 		$db = new Database() ;
 
-		for( $j=$this->size()-1 ; $j>$index ; $j-- ){
-			$row = $db->select_data_from_index($j);
+		if( $index < $this->size() ){
+			for( $j=$this->size()-1 ; $j>$index ; $j-- ){
+			$row = $db->select_data($j);
 			$id = (int)$row['id'];
 			$i = (int)$row['i'] + 1;
 			$db->update_data($id,$i);
+			}
 		}
+		
 
 		$db->insert_data($index+1,$data) ;
 	}
