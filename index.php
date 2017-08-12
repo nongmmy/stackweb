@@ -11,7 +11,7 @@
 		<p><?php echo $_GET['msg'] ; } ?></p>
 
 		<?php if(isset($_GET['data']) ){ ?>
-		<p><?php echo "data ".$_GET['data'] ;} ?></p>
+		<p><?php echo "pop: data= ".$_GET['data'] ;} ?></p>
 	</div>
 
 	<div class="container">
@@ -23,7 +23,7 @@
 	       	 	<button class="push" name="push">push</button>
 			  	<button class="special" name="special">special</button><br>
 				<input type="text" name="data" placeholder="data" required><br>
-				<input class="text-form" type="text" name="index" placeholder="index" required>
+				<input class="text-form" type="text" name="index" placeholder="index" >
 			</form>
 			<br>
 			<form action="main.php" method="POST">

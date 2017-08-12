@@ -17,8 +17,14 @@
 
 	if(isset($_POST['push'])){
 		$data = $_POST['data'];
-		$thestack->push($data);
-		header('Location: http://localhost/stackweb/index.php?msg=Push successfully');
+		if(preg_match('/^\d+$/',$data) ){
+			$thestack->push($data);
+			header('Location: http://localhost/stackweb/index.php?msg=Push successfully');
+		}
+		else{
+			header('Location: http://localhost/stackweb/index.php?msg=Only integer');
+		}
+		
 	}
 
 	if(isset($_POST['special'])){
@@ -26,6 +32,7 @@
 		$index = $_POST['index'];
 		$data = $_POST['data'];
 		//check index 
+
 		if($index >= $thestack->size() || $index < 0 ){
 			header('Location: http://localhost/stackweb/index.php?msg=Out of index');
 		}
