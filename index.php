@@ -34,7 +34,7 @@
 	        		<th>stack data</th>
 	        	</tr>
 	        	<?php include 'class/database.php' ; ?>
-	        	<?php $db = new Database(); ?>
+	        	<?php $db = new superstack\Database(); ?>
 	        	<?php 
 	        		for( $i=$db->count_data()-1 ; $i>=0 ; $i-- ){ 
 	        				$row = $db->select_data($i);

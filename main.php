@@ -2,7 +2,7 @@
 
 	include 'class/stack.php' ;
 
-	$thestack = new Stack();
+	$thestack = new superstack\Stack();
 
 	if(isset($_POST['pop'])){
 		//check empty

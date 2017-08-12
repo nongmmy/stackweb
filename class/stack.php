@@ -1,7 +1,7 @@
 <?php
-// include_once "database.php";
-include 'database.php' ;
 
+namespace superstack;
+include 'database.php' ;
 
 class Stack{
 
