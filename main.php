@@ -32,8 +32,13 @@
 		$index = $_POST['index'];
 		$data = $_POST['data'];
 
+		//check empty
 		if(strlen($index)==0){
 			header('Location: http://localhost/stackweb/index.php?msg=index is empty');
+		}
+		//check interger
+		else if( (!preg_match('/^\d+$/',$data)) || (!preg_match('/^\d+$/',$index)) ) {
+			header('Location: http://localhost/stackweb/index.php?msg=Only integer');
 		}
 		//check index 
 		else if($index >= $thestack->size() || $index < 0 ){
